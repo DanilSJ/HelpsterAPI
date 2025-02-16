@@ -1,0 +1,25 @@
+[project]
+name = "helpsterapi"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "DanilSJ",email = "danilchagarnoy@mail.ru"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (>=0.115.8,<0.116.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "uvicorn (>=0.34.0,<0.35.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
