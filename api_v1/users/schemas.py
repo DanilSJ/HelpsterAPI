@@ -1,6 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Annotated
 from annotated_types import MinLen, MaxLen
+
+
+class UserBase(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    login: str
+    telegram_id: int
 
 
 class Register(BaseModel):
@@ -14,5 +20,6 @@ class Login(BaseModel):
     password: Annotated[str, MinLen(3), MaxLen(30)]
 
 
-class UpdateUser(BaseModel):
-    surname: str
+class UserUpdate(UserBase):
+    login: str | None = None
+    telegram_id: int | None = None
