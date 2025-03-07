@@ -5,6 +5,13 @@ from sqlalchemy import select
 from core.models import User
 
 
+async def get_all_users(session: AsyncSession) -> list[User]:
+    stmt = select(User).order_by(User.id)
+    result: Result = await session.execute(stmt)
+    users = result.scalars().all()
+    return list(users)
+
+
 async def create_user(session: AsyncSession, user_in: Register) -> User:
     user = User(**user_in.model_dump())
     session.add(user)
