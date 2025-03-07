@@ -4,7 +4,7 @@ from fastapi import FastAPI
 import uvicorn
 
 from core.config import settings
-from api_v1 import router as user_router
+from api_v1 import router as api_v1_router
 
 
 @asynccontextmanager
@@ -18,7 +18,7 @@ app = FastAPI(
     description="API HelpsterAPI",
     version="0.1.0",
 )
-app.include_router(router=user_router, prefix=settings.api_v1_prefix)
+app.include_router(router=api_v1_router, prefix=settings.api_v1_prefix)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
